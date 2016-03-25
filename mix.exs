@@ -4,9 +4,9 @@ defmodule Export.Mixfile do
   def project do
     [
       app: :export,
-      description: "ICalendar parser.",
+      description: "Erlport wrapper for Elixir",
       package: package,
-      version: "0.0.0",
+      version: "0.0.1",
       elixir: "~> 1.2",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
@@ -30,6 +30,9 @@ defmodule Export.Mixfile do
 
   defp deps do
     [
+      {:erlport, git: "https://github.com/hdima/erlport.git", manager: :make},
+      {:ex_doc, "~> 0.11", only: :dev},
+      {:earmark, ">= 0.0.0", only: :dev}
     ]
   end
 end
