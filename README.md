@@ -1,4 +1,4 @@
-# Export ![Package Version](https://img.shields.io/hexpm/v/export.svg) [![Build Status](https://travis-ci.org/fazibear/export.svg?branch=master)](https://travis-ci.org/fazibear/export)
+# Export [![Package Version](https://img.shields.io/hexpm/v/export.svg)](https://hex.pm/packages/export) [![Build Status](https://travis-ci.org/fazibear/export.svg?branch=master)](https://travis-ci.org/fazibear/export)
 
 
 [Erlport](http://erlport.org/) wrapper for Elixir.
