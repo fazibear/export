@@ -1,4 +1,4 @@
-# Export ![Package Version](https://img.shields.io/hexpm/v/export.svg)
+# Export ![Package Version](https://img.shields.io/hexpm/v/export.svg) [![Build Status](https://travis-ci.org/fazibear/export.svg?branch=master)](https://travis-ci.org/fazibear/export)
 
 Erlang erlport wrapper for elixir.
 
