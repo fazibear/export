@@ -9,7 +9,7 @@ Add export to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:export, "~> 0.0.1"}]
+  [{:export, "~> 0.0.2"}]
 end
 ```
 
@@ -19,14 +19,17 @@ end
 
 ```elixir
 defmodule SomeRubyCall do
-  alias Export.Ruby
+  use Export.Ruby
 
   def call_ruby_method
     # path to ruby files
     {:ok, ruby} = Ruby.start(ruby_lib: Path.expand("lib/ruby"))
 
-    # call "upcase" method from "test" file
-    ruby |> Ruby.call("test", "upcase", [])
+    # call "upcase" method from "test" file with "hello" argument
+    ruby |> Ruby.call("test", "upcase", ["hello"])
+
+    # same as above but prettier
+    ruby |> Ruby.call(from_file: "test", invoke: upcase("hello"))
   end
 end
 ```
@@ -34,15 +37,18 @@ end
 ### Python
 
 ```elixir
-defmodule SomeRubyCall do
-  alias Export.Python
+defmodule SomePythonCall do
+  use Export.Python
 
   def call_ruby_method
     # path to our python files
     {:ok, py} = Python.start(python_path: Path.expand("lib/python"))
 
-    # call "upcase" method from "test" file
-    py |> Python.call("test", "upcase", [])
+    # call "upcase" method from "test" file with "hello" argument
+    py |> Python.call("test", "upcase", ["hello"])
+
+    # same as above but prettier
+    py |> Python.call(from_file: "test", invoke: upcase("hello"))
   end
 end
 ```

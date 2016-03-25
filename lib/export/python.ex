@@ -1,5 +1,12 @@
 defmodule Export.Python do
   import Export.Helpers
+  @doc false
+  defmacro __using__(_opts) do
+    quote do
+      alias Export.Python
+      require Export.Python
+    end
+  end
 
   def start(), do: :python.start()
   def start(options), do: options |> convert_options |> :python.start
@@ -12,4 +19,11 @@ defmodule Export.Python do
   def stop(instance), do: :python.stop(instance)
 
   def call(instance, file, function, arguments), do: :python.call(instance, String.to_atom(file), String.to_atom(function), arguments)
+
+  defmacro call(instance, from_file: file, invoke: expression) do
+    {function, _meta, arguments} = expression
+    quote do
+      :python.call(unquote(instance), String.to_atom(unquote(file)), unquote(function), unquote(arguments))
+    end
+  end
 end

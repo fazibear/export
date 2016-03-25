@@ -4,6 +4,14 @@ defmodule Export.Ruby do
     bla bla for ruby
   """
 
+  @doc false
+  defmacro __using__(_opts) do
+    quote do
+      alias Export.Ruby
+      require Export.Ruby
+    end
+  end
+
   @doc """
   Start Ruby instance with the default options.
 
@@ -36,4 +44,11 @@ defmodule Export.Ruby do
   def stop(instance), do: :ruby.stop(instance)
 
   def call(instance, file, function, arguments), do: :ruby.call(instance, String.to_atom(file), String.to_atom(function), arguments)
+
+  defmacro call(instance, from_file: file, invoke: expression) do
+    {function, _meta, arguments} = expression
+    quote do
+      :ruby.call(unquote(instance), String.to_atom(unquote(file)), unquote(function), unquote(arguments))
+    end
+  end
 end
