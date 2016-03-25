@@ -40,7 +40,7 @@ end
 defmodule SomePythonCall do
   use Export.Python
 
-  def call_ruby_method
+  def call_python_method
     # path to our python files
     {:ok, py} = Python.start(python_path: Path.expand("lib/python"))
 
