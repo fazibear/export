@@ -1,6 +1,4 @@
-# Export
-
-WORK IN PROGRESS
+# Export ![Package Version](https://img.shields.io/hexpm/v/export.svg)
 
 Erlang erlport wrapper for elixir.
 
@@ -8,8 +6,44 @@ Erlang erlport wrapper for elixir.
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
 
-  1. Add export to your list of dependencies in `mix.exs`:
+ * Add export to your list of dependencies in `mix.exs`:
 
-        def deps do
-          [{:export, "~> 0.0.1"}]
-        end
+```elixir
+def deps do
+  [{:export, "~> 0.0.1"}]
+end
+```
+
+## Usage
+
+# Ruby
+
+```elixir
+defmodule SomeRubyCall do
+  alias Export.Ruby
+
+  def call_ruby_method
+    # path to ruby files
+    {:ok, ruby} = Ruby.start(ruby_lib: Path.expand("lib/ruby"))
+
+    # call "upcase" method from "test" file
+    ruby |> Ruby.call("test", "upcase", [])
+  end
+end
+```
+
+# Python
+
+```elixir
+defmodule SomeRubyCall do
+  alias Export.Python
+
+  def call_ruby_method
+    # path to our python files
+    {:ok, py} = Python.start(python_path: Path.expand("lib/python"))
+
+    # call "upcase" method from "test" file
+    py |> Python.call("test", "upcase", [])
+  end
+end
+```
