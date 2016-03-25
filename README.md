@@ -4,9 +4,7 @@ Erlang erlport wrapper for elixir.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
-
- * Add export to your list of dependencies in `mix.exs`:
+Add export to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -16,7 +14,7 @@ end
 
 ## Usage
 
-# Ruby
+### Ruby
 
 ```elixir
 defmodule SomeRubyCall do
@@ -32,7 +30,7 @@ defmodule SomeRubyCall do
 end
 ```
 
-# Python
+### Python
 
 ```elixir
 defmodule SomeRubyCall do
