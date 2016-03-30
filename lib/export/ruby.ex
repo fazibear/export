@@ -47,9 +47,7 @@ defmodule Export.Ruby do
 
   defmacro call(instance, expression, from_file: file) do
     {function, _meta, arguments} = expression
-
     unless arguments, do: arguments = []
-
     quote do
       :ruby.call(unquote(instance), String.to_atom(unquote(file)), unquote(function), unquote(arguments))
     end

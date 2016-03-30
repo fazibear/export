@@ -22,6 +22,7 @@ defmodule Export.Python do
 
   defmacro call(instance, expression, from_file: file) do
     {function, _meta, arguments} = expression
+    unless arguments, do: arguments = []
     quote do
       :python.call(unquote(instance), String.to_atom(unquote(file)), unquote(function), unquote(arguments))
     end
