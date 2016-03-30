@@ -13,7 +13,7 @@ defmodule ExportRubyTest do
   test "Ruby.call macro" do
     {:ok, pid} = Ruby.start(ruby_lib: "test")
 
-    result = pid |> Ruby.call(from_file: "test", invoke: upcase("hello"))
+    result = pid |> Ruby.call(upcase("hello"), from_file: "test")
     assert result == "HELLO"
   end
 end

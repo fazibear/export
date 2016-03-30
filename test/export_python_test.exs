@@ -13,7 +13,7 @@ defmodule ExportPythonTest do
   test "Python.call macro" do
     {:ok, pid} = Python.start(python_path: "test")
 
-    result = pid |> Python.call(from_file: "test", invoke: upcase("hello"))
+    result = pid |> Python.call(upcase("hello"), from_file: "test")
     assert result == "HELLO"
   end
 end

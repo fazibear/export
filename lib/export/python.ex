@@ -20,7 +20,7 @@ defmodule Export.Python do
 
   def call(instance, file, function, arguments), do: :python.call(instance, String.to_atom(file), String.to_atom(function), arguments)
 
-  defmacro call(instance, from_file: file, invoke: expression) do
+  defmacro call(instance, expression, from_file: file) do
     {function, _meta, arguments} = expression
     quote do
       :python.call(unquote(instance), String.to_atom(unquote(file)), unquote(function), unquote(arguments))
