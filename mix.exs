@@ -6,7 +6,7 @@ defmodule Export.Mixfile do
       app: :export,
       description: "Erlport wrapper for Elixir",
       package: package,
-      version: "0.0.6",
+      version: "0.0.7",
       elixir: "~> 1.2",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
@@ -30,7 +30,7 @@ defmodule Export.Mixfile do
 
   defp deps do
     [
-      {:erlport, git: "https://github.com/hdima/erlport.git", compile: "rebar compile && make"},
+      {:erlport, github: "hdima/erlport", manager: :make},
       {:ex_doc, "~> 0.11", only: :dev},
       {:earmark, ">= 0.0.0", only: :dev}
     ]

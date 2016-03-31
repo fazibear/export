@@ -9,7 +9,10 @@ Add export to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:export, "~> 0.0.6"}]
+  [
+    {:export, "~> 0.0.7"},
+    {:erlport, github: "hdima/erlport", manager: :make}
+  ]
 end
 ```
 
