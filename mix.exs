@@ -10,7 +10,11 @@ defmodule Export.Mixfile do
       elixir: "~> 1.2",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
-      deps: deps
+      deps: deps,
+      docs: [
+        main: Export,
+        source_url: "https://github.com/fazibear/export"
+      ]
     ]
   end
 
@@ -18,7 +22,9 @@ defmodule Export.Mixfile do
     [
       maintainers: ["Michał Kalbarczyk"],
       licenses: ["MIT"],
-      links: %{github: "https://github.com/fazibear/export"}
+      links: %{
+        github: "https://github.com/fazibear/export"
+      }
    ]
   end
 
@@ -31,7 +37,7 @@ defmodule Export.Mixfile do
   defp deps do
     [
       {:erlport, github: "hdima/erlport", manager: :make},
-      {:ex_doc, "~> 0.11", only: :dev},
+      {:ex_doc, ">= 0.0.0", only: :dev},
       {:earmark, ">= 0.0.0", only: :dev}
     ]
   end

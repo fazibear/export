@@ -1,4 +1,6 @@
 defmodule Export.Helpers do
+  @moduledoc false
+
   def convert_options(options) do
     options |> Enum.map(fn (opt)->
       case opt do
