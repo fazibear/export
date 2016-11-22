@@ -8,6 +8,10 @@
 Add export to your list of dependencies in `mix.exs`:
 
 ```elixir
+def application do
+  [applications: [:export]]
+end
+
 def deps do
   [
     {:export, "~> 0.0.7"},
