@@ -36,7 +36,7 @@ defmodule Export.Mixfile do
 
   defp deps() do
     [
-      {:erlport, github: "hdima/erlport", manager: :make},
+      {:erlport, "~> 0.9"},
       {:ex_doc, ">= 0.0.0", only: :dev},
     ]
   end

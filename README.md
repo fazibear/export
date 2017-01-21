@@ -14,8 +14,7 @@ end
 
 def deps do
   [
-    {:export, "~> 0.0.7"},
-    {:erlport, github: "hdima/erlport", manager: :make}
+    {:export, "~> 0.1.0"},
   ]
 end
 ```
