@@ -30,7 +30,7 @@ defmodule Export.Mixfile do
 
   def application() do
     [
-      applications: []
+      applications: [:export]
     ]
   end
 
