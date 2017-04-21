@@ -61,6 +61,7 @@ defmodule Export.Python do
     - python: Path to the Python interpreter executable
     - python_path: The Python modules search path. The Path variable can be a string in PYTHONPATH format or a list of paths.
   """
+  def start(name, options) when not is_tuple(name), do: :python.start({:local, name}, options |> convert_options)
   def start(name, options), do: :python.start(name, options |> convert_options)
 
   @doc """
@@ -76,6 +77,7 @@ defmodule Export.Python do
   @doc """
   The same as start/2 except the link to the current process is also created.
   """
+  def start_link(name, options) when not is_tuple(name), do: :python.start_link({:local, name}, options |> convert_options)
   def start_link(name, options), do: :python.start_link(name, options |> convert_options)
 
   @doc """

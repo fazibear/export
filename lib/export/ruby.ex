@@ -63,6 +63,7 @@ defmodule Export.Ruby do
     - ruby_lib: The Ruby programs search path. The Path variable can be a string in RUBYLIB format or a list of paths.
 
   """
+  def start(name, options) when not is_tuple(name), do: :ruby.start({:local, name}, options |> convert_options)
   def start(name, options), do: :ruby.start(name, options |> convert_options)
 
   @doc """
@@ -78,6 +79,7 @@ defmodule Export.Ruby do
   @doc """
   The same as start/2 except the link to the current process is also created.
   """
+  def start_link(name, options) when not is_tuple(name), do: :ruby.start_link({:local, name}, options |> convert_options)
   def start_link(name, options), do: :ruby.start_link(name, options |> convert_options)
 
   @doc """
