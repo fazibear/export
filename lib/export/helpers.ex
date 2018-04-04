@@ -4,12 +4,12 @@ defmodule Export.Helpers do
   def convert_options(options) do
     options |> Enum.map(fn (opt)->
       case opt do
-        {key, other_options} when other_options |> is_list ->
-          {key, other_options |> Enum.map(fn ({key, value}) ->
-            {key |> Atom.to_char_list, value |> String.to_char_list}
+        {key, other_options} when is_list(other_options) ->
+          {key, Enum.map(other_options, fn {key, value} ->
+            {Atom.to_charlist(key), String.to_charlist(value)}
           end)}
-        {key, value} when value |> is_bitstring ->
-          {key, value |> String.to_char_list}
+        {key, value} when is_bitstring(value) ->
+          {key, String.to_charlist(value)}
         _ -> opt
       end
     end)
