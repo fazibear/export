@@ -1,6 +1,5 @@
 # Export [![Package Version](https://img.shields.io/hexpm/v/export.svg)](https://hex.pm/packages/export) [![Build Status](https://travis-ci.org/fazibear/export.svg?branch=master)](https://travis-ci.org/fazibear/export)
 
-
 [Erlport](http://erlport.org/) wrapper for Elixir.
 
 ## Installation
@@ -29,13 +28,16 @@ defmodule SomeRubyCall do
 
   def call_ruby_method
     # path to ruby files
-    {:ok, ruby} = Ruby.start(ruby_lib: Path.expand("lib/ruby"))
+    {:ok, pid} = Ruby.start(ruby_lib: Path.expand("lib/ruby"))
 
     # call "upcase" method from "test" file with "hello" argument
-    ruby |> Ruby.call("test", "upcase", ["hello"])
+    pid |> Ruby.call("test", "upcase", ["hello"])
 
     # same as above but prettier
-    ruby |> Ruby.call(upcase("hello"), from_file: "test")
+    pid |> Ruby.call(upcase("hello"), from_file: "test")
+
+    #flush the pid
+    Ruby.stop(pid)
   end
 end
 ```
@@ -48,13 +50,16 @@ defmodule SomePythonCall do
 
   def call_python_method do
     # path to our python files
-    {:ok, py} = Python.start(python_path: Path.expand("lib/python"))
+    {:ok, pid} = Python.start(python_path: Path.expand("lib/python"))
 
     # call "upcase" method from "test" file with "hello" argument
-    py |> Python.call("test", "upcase", ["hello"])
+    pid |> Python.call("test", "upcase", ["hello"])
 
     # same as above but prettier
-    py |> Python.call(upcase("hello"), from_file: "test")
+    pid |> Python.call(upcase("hello"), from_file: "test")
+
+    #flush the pid
+    Python.stop(pid)
   end
 end
 ```
