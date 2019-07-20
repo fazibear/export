@@ -27,7 +27,7 @@ end
 defmodule SomeRubyCall do
   use Export.Ruby
 
-  def call_ruby_method
+  def call_ruby_method do
     # path to ruby files
     {:ok, ruby} = Ruby.start(ruby_lib: Path.expand("lib/ruby"))
 
