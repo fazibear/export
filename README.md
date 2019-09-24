@@ -54,7 +54,12 @@ defmodule SomePythonCall do
     py |> Python.call("test", "upcase", ["hello"])
 
     # same as above but prettier
-    py |> Python.call(upcase("hello"), from_file: "test")
+    val = py |> Python.call(upcase("hello"), from_file: "test")
+
+    # close the Python process
+    py |> Python.close()
+
+    val
   end
 end
 ```
