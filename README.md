@@ -56,8 +56,8 @@ defmodule SomePythonCall do
     # same as above but prettier
     val = py |> Python.call(upcase("hello"), from_file: "test")
 
-    # close the Python process
-    py |> Python.close()
+    # stop the Python process
+    py |> Python.stop()
 
     val
   end
