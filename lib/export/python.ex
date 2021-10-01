@@ -41,7 +41,7 @@ defmodule Export.Python do
       {:ok, pid}
 
   """
-  def start(), do: :python.start()
+  def start, do: :python.start()
 
   @doc """
   Start Python instance with options.
@@ -51,7 +51,7 @@ defmodule Export.Python do
     - python: Path to the Python interpreter executable
     - python_path: The Python modules search path. The Path variable can be a string in PYTHONPATH format or a list of paths.
   """
-  def start(options), do: options |> convert_options |> :python.start
+  def start(options), do: options |> convert_options |> :python.start()
 
   @doc """
   Start Python instance with name and options.
@@ -61,23 +61,27 @@ defmodule Export.Python do
     - python: Path to the Python interpreter executable
     - python_path: The Python modules search path. The Path variable can be a string in PYTHONPATH format or a list of paths.
   """
-  def start(name, options) when not is_tuple(name), do: :python.start({:local, name}, options |> convert_options)
+  def start(name, options) when not is_tuple(name),
+    do: :python.start({:local, name}, options |> convert_options)
+
   def start(name, options), do: :python.start(name, options |> convert_options)
 
   @doc """
   The same as start/0 except the link to the current process is also created.
   """
-  def start_link(), do: :python.start_link()
+  def start_link, do: :python.start_link()
 
   @doc """
   The same as start/1 except the link to the current process is also created.
   """
-  def start_link(options), do: options |> convert_options |> :python.start_link
+  def start_link(options), do: options |> convert_options |> :python.start_link()
 
   @doc """
   The same as start/2 except the link to the current process is also created.
   """
-  def start_link(name, options) when not is_tuple(name), do: :python.start_link({:local, name}, options |> convert_options)
+  def start_link(name, options) when not is_tuple(name),
+    do: :python.start_link({:local, name}, options |> convert_options)
+
   def start_link(name, options), do: :python.start_link(name, options |> convert_options)
 
   @doc """
@@ -100,7 +104,8 @@ defmodule Export.Python do
   py |> Python.call("test", "upcase", ["hello"])
   ```
   """
-  def call(instance, file, function, arguments), do: :python.call(instance, String.to_atom(file), String.to_atom(function), arguments)
+  def call(instance, file, function, arguments),
+    do: :python.call(instance, String.to_atom(file), String.to_atom(function), arguments)
 
   @doc """
   Call Python function.
@@ -119,8 +124,14 @@ defmodule Export.Python do
   defmacro call(instance, expression, from_file: file) do
     {function, _meta, arguments} = expression
     arguments = arguments || []
+
     quote do
-      :python.call(unquote(instance), String.to_atom(unquote(file)), unquote(function), unquote(arguments))
+      :python.call(
+        unquote(instance),
+        String.to_atom(unquote(file)),
+        unquote(function),
+        unquote(arguments)
+      )
     end
   end
 end
