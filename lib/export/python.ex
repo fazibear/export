@@ -41,7 +41,7 @@ defmodule Export.Python do
       {:ok, pid}
 
   """
-  def start(), do: :python.start()
+  def start, do: :python.start()
 
   @doc """
   Start Python instance with options.
@@ -69,7 +69,7 @@ defmodule Export.Python do
   @doc """
   The same as start/0 except the link to the current process is also created.
   """
-  def start_link(), do: :python.start_link()
+  def start_link, do: :python.start_link()
 
   @doc """
   The same as start/1 except the link to the current process is also created.

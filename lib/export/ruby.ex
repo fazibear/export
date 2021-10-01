@@ -41,7 +41,7 @@ defmodule Export.Ruby do
       {:ok, pid}
 
   """
-  def start(), do: :ruby.start()
+  def start, do: :ruby.start()
 
   @doc """
   Start Ruby instance with options.
@@ -71,7 +71,7 @@ defmodule Export.Ruby do
   @doc """
   The same as start/0 except the link to the current process is also created.
   """
-  def start_link(), do: :ruby.start_link()
+  def start_link, do: :ruby.start_link()
 
   @doc """
   The same as start/1 except the link to the current process is also created.
